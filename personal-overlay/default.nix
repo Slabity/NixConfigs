@@ -1,4 +1,4 @@
-prev: prev:
+final: prev:
 {
   powerlevel10k = prev.callPackage ./powerlevel10k.nix {};
 
@@ -9,17 +9,18 @@ prev: prev:
     ];
   });
 
-  preferredRustChannel = prev.rustChannelOf {
-    date = "2020-08-27";
+  preferredRustChannel = final.rustChannelOf {
+    sha256 = "sha256-i6Qohq133cxHvangqBaNaMWOVO6f6eskZPG2RXOs2bU=";
+    date = "2021-02-05";
     channel = "nightly";
   };
 
   vulkan-loader = prev.vulkan-loader.overrideAttrs (old: {
     cmakeFlags = [
-      "-DSYSCONFDIR=${prev.addOpenGLRunpath.driverLink}/share"
-      "-DVULKAN_HEADERS_INSTALL_DIR=${prev.vulkan-headers}"
+      "-DSYSCONFDIR=${final.addOpenGLRunpath.driverLink}/share"
+      "-DVULKAN_HEADERS_INSTALL_DIR=${final.vulkan-headers}"
       "-DBUILD_WSI_WAYLAND_SUPPORT=ON"
-      "-DCMAKE_INSTALL_INCLUDEDIR=${prev.vulkan-headers}/include"
+      "-DCMAKE_INSTALL_INCLUDEDIR=${final.vulkan-headers}/include"
     ];
   });
 

@@ -77,6 +77,7 @@ in
       setLdLibraryPath = true;
 
       extraPackages = mkIf hwCfg.gpu.enable [
+        pkgs.amdvlk
         pkgs.libGL
         pkgs.vaapiIntel      # Video Accel API by Intel
         pkgs.libvdpau-va-gl  # VDPAU driver using VAAPI
@@ -85,6 +86,7 @@ in
       ];
 
       extraPackages32 = mkIf hwCfg.cpu.support32Bit [
+        pkgs.pkgsi686Linux.amdvlk
         pkgs.pkgsi686Linux.libGL
         pkgs.pkgsi686Linux.vaapiIntel      # Video Accel API by Intel
         pkgs.pkgsi686Linux.libvdpau-va-gl  # VDPAU driver using VAAPI

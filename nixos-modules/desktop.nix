@@ -48,6 +48,16 @@ in
       antialias = true;
     };
 
+    xdg = {
+      portal = {
+        enable = true;
+        extraPortals = [
+          pkgs.xdg-desktop-portal-wlr
+        ];
+        gtkUsePortal = true;
+      };
+    };
+
     environment.systemPackages = with pkgs; [
       nix-index
       nix-prefetch-git

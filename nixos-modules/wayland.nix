@@ -31,13 +31,28 @@ in
           swaylock # lockscreen
           swayidle
 
+          flashfocus # Simple window animations
+
           xwayland # for legacy apps
 
           waybar # status bar
           mako # notification daemon
           kanshi # autorandr
+
+          # GTK settings
+          gtk-engine-murrine
+          gtk_engines
+          gsettings-desktop-schemas
+          lxappearance
         ];
+
+        wrapperFeatures = {
+          base = true;
+          gtk = true;
+        };
       };
+
+      programs.waybar.enable = true;
 
       environment.systemPackages = with pkgs; [
         startsway
