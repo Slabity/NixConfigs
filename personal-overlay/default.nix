@@ -6,7 +6,16 @@ final: prev:
     extraPkgs = p: with p; [
       libcap.lib
       vulkan-loader
+      pipewire.lib
     ];
+  });
+
+  remarkable-mouse = prev.remarkable-mouse.overrideAttrs (old: {
+    src = fetchGit {
+      url = "https://github.com/davidsharp/remarkable_mouse";
+    };
+
+    propagatedBuildInputs = old.propagatedBuildInputs ++ [ final.libdrm ];
   });
 
   preferredRustChannel = final.rustChannelOf {

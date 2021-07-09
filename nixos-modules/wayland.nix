@@ -31,8 +31,6 @@ in
           swaylock # lockscreen
           swayidle
 
-          flashfocus # Simple window animations
-
           xwayland # for legacy apps
 
           waybar # status bar

@@ -2,32 +2,29 @@
 with lib;
 let
   cfg = config.foxos;
-
-  cpuCfg = cfg.hardware.cpu;
-  totalThreads = cpuCfg.sockets * cpuCfg.cores * cpuCfg.threads;
-
-  isDesktop = cfg.desktop.enable;
-
   responsiveNiceLevel = 5;
 in
 {
   config = {
     nix.package = pkgs.nixUnstable;
 
-    nix.daemonNiceLevel = mkIf isDesktop responsiveNiceLevel;
-    nix.daemonIONiceLevel = mkIf isDesktop responsiveNiceLevel;
+    nix.daemonNiceLevel = 6;
+    nix.daemonIONiceLevel = 6;
 
-    nix.maxJobs = totalThreads - 1;
-    nix.buildCores = totalThreads - 1;
-
-    nix.readOnlyStore = true;
-    nix.autoOptimiseStore = true;
+    nix.gc.automatic = true;
+    nix.optimise.automatic = true;
 
     nix.trustedUsers = [ "root" "@wheel" ];
 
     nix.extraOptions = ''
       experimental-features = nix-command flakes
     '';
+
+    nix.nixPath = [
+      "nixos-config=/nix/var/nix/profiles/per-user/root/channels"
+      "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos"
+      "nixpkgs-overlays=/run/current-system/overlays"
+    ];
 
     nixpkgs.config.allowUnfree = true;
   };

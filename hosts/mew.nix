@@ -6,22 +6,9 @@
   services.openssh.permitRootLogin = "yes";
 
   foxos.hardware.efi = true;
-
-  foxos.hardware.cpu = {
-    type = "amd";
-    sockets = 1;
-    cores = 8;
-    threads = 2;
-    support32Bit = true;
-  };
-
   foxos.hardware.gpu.enable = true;
-  foxos.hardware.gpu.type.intel = false;
-  foxos.hardware.gpu.type.amd = true;
-
-  foxos.hardware.bluetooth.enable = true;
   foxos.hardware.audio.enable = true;
-  foxos.hardware.battery.enable = false;
+  foxos.hardware.bluetooth.enable = true;
 
   foxos.desktop.enable = true;
   foxos.desktop.wayland.enable = true;
@@ -55,7 +42,6 @@
 
   boot.initrd.availableKernelModules = [ "uas" "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
   boot.kernelModules = [ "kvm-amd" "uinput" ];
-  boot.extraModulePackages = [ ];
 
   fileSystems = let
     btrfsDisk = { device, subvol ? null, ssd ? null }:

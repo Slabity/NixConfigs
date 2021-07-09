@@ -308,6 +308,11 @@
             mode = "3440x1440";
             position = "1440,900";
           }
+          {
+            criteria = "DP-1";
+            mode = "2880x1600";
+            status = "disable";
+          }
         ];
       };
     };
