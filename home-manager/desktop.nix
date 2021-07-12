@@ -209,8 +209,8 @@
     style = ''
       * {
         min-height: 0;
-        font-size: 11px;
-        font-family: Terminess Powerline;
+        font-size: 12px;
+        font-family: Terminus;
       }
 
       window {
