@@ -21,10 +21,9 @@ in
     ];
 
     extraPython3Packages = ps: with ps; [
-      python-language-server
-      pyls-mypy
-      pyls-isort
-      pyls-black
+      #pyls-mypy
+      #pyls-isort
+      #pyls-black
     ];
 
     extraConfig = ''
