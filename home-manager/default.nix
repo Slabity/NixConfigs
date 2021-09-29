@@ -50,13 +50,11 @@
 
     discord
     element-desktop
-    firefox-wayland
     patchage
     pavucontrol
     prusa-slicer
     rofi
     spotify
-    steam
     waybar
   ];
 }

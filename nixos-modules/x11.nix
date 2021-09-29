@@ -17,23 +17,22 @@ in
         layout = "us";
         libinput = {
           enable = true;
-          accelProfile = "flat";
-          tapping = false;
-          tappingDragLock = false;
+          touchpad = {
+            accelProfile = "flat";
+            tapping = false;
+            tappingDragLock = false;
+          };
         };
 
         displayManager.job.logToJournal = true;
         displayManager.autoLogin = {
           enable = true;
-          user = cfg.mainUser.name;
+          user = "slabity";
         };
 
         displayManager.lightdm.enable = true;
         displayManager.lightdm.greeter.enable = false;
-
         desktopManager.xterm.enable = false;
-
-        videoDrivers = [ "amdgpu" "modesetting" ];
         useGlamor = true;
 
         desktopManager.session = [

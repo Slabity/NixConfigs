@@ -24,18 +24,6 @@ in
       package = pkgs.bluezFull;
     };
 
-    hardware.opengl = mkIf hwCfg.gpu.enable {
-      extraPackages = with pkgs; [
-        rocm-opencl-icd
-        rocm-opencl-runtime
-        amdvlk
-      ];
-
-      extraPackages32 = with pkgs.driversi686Linux; [
-        amdvlk
-      ];
-    };
-
     sound.enable = hwCfg.audio.enable;
 
     services.pipewire = mkIf hwCfg.audio.enable {
@@ -56,6 +44,10 @@ in
       efiSupport = true;
       device = "nodev";
     };
+
+    environment.variables.DISABLE_LAYER_AMD_SWITCHABLE_GRAPHICS_1 = "1";
+    environment.variables.VK_ICD_FILENAMES =
+         "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json:/run/opengl-driver/share/vulkan/icd.d/amd_icd64.json";
 
     services.udev.extraRules = ''
       # Enable BFQ IO Scheduling algorithm

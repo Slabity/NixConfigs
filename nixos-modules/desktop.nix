@@ -59,6 +59,8 @@ in
       };
     };
 
+    programs.steam.enable = true;
+
     environment.systemPackages = with pkgs; [
       nix-index
       nix-prefetch-git
@@ -71,6 +73,7 @@ in
       file bc psmisc
 
       git manpages
+      firefox-wayland
     ];
   };
 }

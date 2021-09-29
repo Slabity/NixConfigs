@@ -4,9 +4,9 @@ final: prev:
 
   steam = prev.steam.override ({
     extraPkgs = p: with p; [
-      libcap.lib
-      vulkan-loader
-      pipewire.lib
+      #libcap.lib
+      #vulkan-loader
+      #pipewire.lib
     ];
   });
 
@@ -46,7 +46,7 @@ final: prev:
     ];
   });
 
-  custom-wine = prev.wine.override ({
+  wine = prev.wine.override ({
     wineRelease = "staging";
     wineBuild = "wineWow";
 

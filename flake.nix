@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/master";
     home-manager.url = "github:nix-community/home-manager";
-    mozilla = { url = "github:Slabity/nixpkgs-mozilla"; flake = false; };
+    mozilla = { url = "github:mozilla/nixpkgs-mozilla"; flake = false; };
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     neovim.url = "github:neovim/neovim?dir=contrib";
   };
